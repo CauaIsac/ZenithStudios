@@ -64,6 +64,17 @@ function fillCarPage(car) {
   document.querySelector(".header-info h1").innerHTML =
     `${car.brand} <span>${car.name}</span>`;
 
+    // 2. [NOVO] Atualizar o Tempo de Postagem
+  // Seleciona o parágrafo que tem o estilo inline e o texto de exemplo
+  const timeElement = document.querySelector(".header-info p");
+
+  if (car.created_at) {
+    const tempoFormatado = calcularTempoAtras(car.created_at);
+    timeElement.innerHTML = `Anúncio postado ${tempoFormatado}`;
+  } else {
+    timeElement.innerHTML = "Data de postagem não disponível";
+  }
+
   document.querySelector(".price-tag").textContent =
     `R$ ${Number(car.price).toLocaleString("pt-BR")}`;
 
@@ -72,6 +83,9 @@ function fillCarPage(car) {
 
   document.querySelector(".seller-info p").innerHTML =
     `Vendedor: ${car.vendedor || "Não informado"}`;
+
+    document.querySelector(".price-tag").textContent =
+    `R$ ${Number(car.price).toLocaleString("pt-BR")}`;
 
   // ------- DESCRIÇÃO -------
   document.querySelector(".description-box p").textContent =
@@ -119,6 +133,30 @@ function openWhatsappModal(car) {
 
     window.open(whatsappURL, "_blank");
   };
+}
+
+// Função auxiliar para calcular o tempo decorrido
+function calcularTempoAtras(dataString) {
+  const dataPostagem = new Date(dataString);
+  const dataAtual = new Date();
+  const diferencaSegundos = Math.floor((dataAtual - dataPostagem) / 1000);
+
+  let intervalo = Math.floor(diferencaSegundos / 31536000);
+  if (intervalo >= 1) return intervalo === 1 ? "há 1 ano" : `há: ${intervalo} anos`;
+
+  intervalo = Math.floor(diferencaSegundos / 2592000);
+  if (intervalo >= 1) return intervalo === 1 ? "há 1 mês" : `há: ${intervalo} meses`;
+
+  intervalo = Math.floor(diferencaSegundos / 86400);
+  if (intervalo >= 1) return intervalo === 1 ? "há 1 dia" : `há: ${intervalo} dias`;
+
+  intervalo = Math.floor(diferencaSegundos / 3600);
+  if (intervalo >= 1) return intervalo === 1 ? "há 1 hora" : `há: ${intervalo} horas`;
+
+  intervalo = Math.floor(diferencaSegundos / 60);
+  if (intervalo >= 1) return intervalo === 1 ? "há 1 minuto" : `há: ${intervalo} minutos`;
+
+  return "agora mesmo";
 }
 
 // === INICIAR ===

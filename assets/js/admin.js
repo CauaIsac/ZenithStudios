@@ -57,7 +57,7 @@ async function fetchCars() {
                 <p>${car.details ? car.details : '—'}</p>
                 <p><strong>Vendedor:</strong> ${car.vendedor ? car.vendedor : '—'}</p>
                 <p><strong>Localização:</strong> ${car.localizacao ? car.localizacao : '—'}</p>
-                <p><strong>Destaque:</strong> ${car.highlight ? "Sim" : "Não"}</p>
+                
                 <div class="image-previews">
                     ${imagens.length ? imagens.map(url => `<img src="${url.trim()}" width="100" alt="Imagem do veículo">`).join('') : ''}
                 </div>
@@ -184,8 +184,7 @@ async function openEditModal(id) {
             <input type="url" name="imagem_2" value="${imagens[1]}" placeholder="URL da segunda imagem">
             <input type="url" name="imagem_3" value="${imagens[2]}" placeholder="URL da terceira imagem">
             <label>
-                <input type="checkbox" name="highlight" ${data.highlight ? 'checked' : ''}> Destacar na Home
-            </label>
+               
             <button type="submit">Salvar alterações</button>
             <button type="button" id="closeModal">Cancelar</button>
         </form>
