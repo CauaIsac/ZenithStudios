@@ -142,19 +142,19 @@ function calcularTempoAtras(dataString) {
   const diferencaSegundos = Math.floor((dataAtual - dataPostagem) / 1000);
 
   let intervalo = Math.floor(diferencaSegundos / 31536000);
-  if (intervalo >= 1) return intervalo === 1 ? "há 1 ano" : `há: ${intervalo} anos`;
+  if (intervalo >= 1) return intervalo === 1 ? "há: 1 ano" : `há: ${intervalo} anos`;
 
   intervalo = Math.floor(diferencaSegundos / 2592000);
-  if (intervalo >= 1) return intervalo === 1 ? "há 1 mês" : `há: ${intervalo} meses`;
+  if (intervalo >= 1) return intervalo === 1 ? "há: 1 mês" : `há: ${intervalo} meses`;
 
   intervalo = Math.floor(diferencaSegundos / 86400);
-  if (intervalo >= 1) return intervalo === 1 ? "há 1 dia" : `há: ${intervalo} dias`;
+  if (intervalo >= 1) return intervalo === 1 ? "há: 1 dia" : `há: ${intervalo} dias`;
 
   intervalo = Math.floor(diferencaSegundos / 3600);
-  if (intervalo >= 1) return intervalo === 1 ? "há 1 hora" : `há: ${intervalo} horas`;
+  if (intervalo >= 1) return intervalo === 1 ? "há: 1 hora" : `há: ${intervalo} horas`;
 
   intervalo = Math.floor(diferencaSegundos / 60);
-  if (intervalo >= 1) return intervalo === 1 ? "há 1 minuto" : `há: ${intervalo} minutos`;
+  if (intervalo >= 1) return intervalo === 1 ? "há: 1 minuto" : `há: ${intervalo} minutos`;
 
   return "agora mesmo";
 }
