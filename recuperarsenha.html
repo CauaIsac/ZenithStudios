@@ -84,7 +84,7 @@
             const email = document.getElementById("emailReset").value;
 
             const { error } = await supabase.auth.resetPasswordForEmail(email, {
-                redirectTo: "http://localhost:5500/update-password.html"
+                redirectTo: "https://zenithstudios.netlify.app/update-password.html"
                 // ou para localhost:
                 // redirectTo: "http://localhost:5500/update-password.html"
             });
